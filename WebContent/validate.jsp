@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="DrawByParameter" method="get">
-  a:<input type="text" name="picture"><br><br>
-  b:<input type="text" name="b"><br><br>
-  c:<input type="text" name="c"><br><br>
-  <input type="submit" value="按我">
-</form>
+<form action="Validate" method="post">
+${password}
+<>
 
 </body>
 </html>

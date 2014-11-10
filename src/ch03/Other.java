@@ -5,21 +5,20 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Header
+ * Servlet implementation class Other
  */
-public class Header extends HttpServlet {
+public class Other extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Header() {
+    public Other() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,32 +28,22 @@ public class Header extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter pw = response.getWriter();
-		Enumeration<String> enumeration = request.getHeaderNames();
+		pw.println("Other start......");
+		pw.println(request.getParameter("a"));
+		Enumeration<String> enumeration = request.getAttributeNames();
 		while (enumeration.hasMoreElements()) {
-			String header = enumeration.nextElement();
-			pw.println(header + ":" + request.getHeader(header));
-			pw.println();
-			Enumeration<String> headers = request.getHeaders(header);
-			while (headers.hasMoreElements()) {
-				pw.println(header + ":" + headers.nextElement());
-				
-			}
+			String attributeName = enumeration.nextElement();
+			pw.println(attributeName+":"+request.getAttribute(attributeName));
 		}
-		pw.println("----------");
-		request.setAttribute("name", "Henry");
-		Enumeration<String> enumeration2 = request.getAttributeNames();
-		while (enumeration2.hasMoreElements()) {
-			String attributeName = enumeration2.nextElement();
-			pw.println(attributeName + ":" + request.getAttribute(attributeName));
-		}
-		
+		response.setHeader("a", "I am a");
+		pw.println("Other end......");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

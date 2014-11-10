@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="DrawByParameter" method="get">
-  a:<input type="text" name="picture"><br><br>
-  b:<input type="text" name="b"><br><br>
-  c:<input type="text" name="c"><br><br>
-  <input type="submit" value="按我">
+
+<form action="/test/RequestBody" method="POST" enctype="multipart/form-data">
+	請輸入文字:<input type="file" name="file"><br>
+	<input type="submit" value="按我">
 </form>
 
 </body>
